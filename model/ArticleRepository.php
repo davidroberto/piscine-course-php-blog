@@ -22,7 +22,7 @@ class ArticleRepository
     // elle insère le titre, le contenu et la date qu'on lui envoie en parametre
     public function insert($title, $content, $date)
     {
-        
+
         // model
         $dbConnection = new DbConnection();
         $pdo = $dbConnection->connect();
@@ -36,12 +36,9 @@ class ArticleRepository
         $stmt->bindParam(':content', $content);
         $stmt->bindParam(':created_at', $date);
 
-        // view
-        if ($stmt->execute()) {
-            echo "Nouvel article ajouté avec succès";
-        } else {
-            echo "Erreur lors de l'ajout de l'article";
-        }
+       $isRequestOk = $stmt->execute();
+
+       return $isRequestOk;
     }
 
 

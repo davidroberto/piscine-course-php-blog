@@ -17,6 +17,3 @@ class IndexController
 
 }
 
-$indexController = new IndexController();
-$indexController->index();
-
