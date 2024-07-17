@@ -1,36 +1,31 @@
 <?php
 
+
 require_once("../config/config.php");
+require_once("../model/ArticleRepository.php");
+
 
 
 class AddArticleController
 {
 
-    public function addArticle() {
-
-        // model
-        $dbConnection = new DbConnection();
-        $pdo = $dbConnection->connect();
+    public function addArticle()
+    {
 
         // controller
-        $title = "Mon super article";
-        $content = "blablabla";
-        $date = "24-07-17";
+        $title = $_POST['title'];
+        $content = $_POST['content'];
+        $date = new DateTime('NOW');
 
-        // model
-        $sql = "INSERT INTO article (title, content, created_at) VALUES (:title, :content, :created_at)";
-        $stmt = $pdo->prepare($sql);
+        // j'instancie l'ArticleRepository
+        // et j'appelle la méthode insert
+        // on lui donnant les valeurs pour le titre, le contenu et la date
+        // que je veux insérer
+        $articleRepository = new ArticleRepository();
+        $articleRepository->insert($title, $content, $date);
 
-        $stmt->bindParam(':title', $title);
-        $stmt->bindParam(':content', $content);
-        $stmt->bindParam(':created_at', $date);
 
-        // view
-        if ($stmt->execute()) {
-            echo "Nouvel article ajouté avec succès";
-        } else {
-            echo "Erreur lors de l'ajout de l'article";
-        }
+
 
     }
 

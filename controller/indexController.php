@@ -3,14 +3,16 @@
 require_once("../config/config.php");
 require_once("../model/ArticleRepository.php");
 
-class IndexController {
+class IndexController
+{
 
-	public function index() {
+    public function index()
+    {
         $articleRepository = new ArticleRepository();
         $articles = $articleRepository->findAll();
 
-		require_once('../template/page/indexView.php');
-	}
+        require_once('../template/page/indexView.php');
+    }
 
 
 }
