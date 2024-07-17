@@ -27,10 +27,10 @@ class ArticleController
 
     }
 
-    public function showArticle()
-    {
+
+    public function showArticle() {
         $articleRepository = new ArticleRepository();
-        $article = $articleRepository->findOneById("1");
+        $article = $articleRepository->findOneById(2);
 
         require_once('../template/page/showArticleView.php');
     }

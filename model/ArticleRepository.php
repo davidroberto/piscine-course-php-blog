@@ -52,7 +52,7 @@ class ArticleRepository
         $stmt = $pdo->prepare($sql);
 
         // Bind the id parameter
-        $stmt->bindParam(':id', $id, PDO::PARAM_INT);
+        $stmt->bindParam(':id', $id);
 
         // Execute the query
         $stmt->execute();
