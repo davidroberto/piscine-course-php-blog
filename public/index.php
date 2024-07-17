@@ -1,6 +1,6 @@
 <?php
 
-require_once('../controller/AddArticleController.php');
+require_once('../controller/ArticleController.php');
 require_once('../controller/IndexController.php');
 
 // Récupérer l'URL demandée
@@ -16,7 +16,10 @@ $uri = trim($uri, '/');
 if($uri === "") {
     $indexController = new IndexController();
     $indexController->index();
-}else if ($uri === "add-article") {
-    $addArticleController = new AddArticleController();
+} else if ($uri === "add-article") {
+    $addArticleController = new ArticleController();
     $addArticleController->addArticle();
+} else if ($uri === "show-article") {
+    $addArticleController = new ArticleController();
+    $addArticleController->showArticle();
 }

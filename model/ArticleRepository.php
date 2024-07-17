@@ -41,5 +41,28 @@ class ArticleRepository
        return $isRequestOk;
     }
 
+    public function findOneById($id)
+    {
+        // Connect to the database
+        $dbConnection = new DbConnection();
+        $pdo = $dbConnection->connect();
+
+        // Prepare the SQL query
+        $sql = "SELECT * FROM article WHERE id = :id";
+        $stmt = $pdo->prepare($sql);
+
+        // Bind the id parameter
+        $stmt->bindParam(':id', $id, PDO::PARAM_INT);
+
+        // Execute the query
+        $stmt->execute();
+
+        // Fetch the result as an associative array
+        $article = $stmt->fetch(PDO::FETCH_ASSOC);
+
+        // Return the article
+        return $article;
+    }
+
 
 }
