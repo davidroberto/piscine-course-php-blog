@@ -24,6 +24,11 @@ if($endUri === "") {
     $addArticleController = new ArticleController();
     $addArticleController->showArticle();
 
+} else if ($endUri === "delete-article") {
+
+    $addArticleController = new ArticleController();
+    $addArticleController->deleteArticle();
+
 } else {
     echo '<p>Dégage</p>';
 }

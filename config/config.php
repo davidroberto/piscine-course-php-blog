@@ -6,6 +6,8 @@ error_reporting(E_ALL);
 
 session_set_cookie_params(3600);
 
+require_once '../vendor/autoload.php';
+
 
 class DbConnection
 {

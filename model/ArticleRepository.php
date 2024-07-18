@@ -63,5 +63,23 @@ class ArticleRepository
         return $article;
     }
 
+    public function deleteOneById($id)
+    {
+        // Connect to the database
+        $dbConnection = new DbConnection();
+        $pdo = $dbConnection->connect();
+
+        // Prepare the SQL query
+        $sql = "DELETE FROM article WHERE id = :id";
+        $stmt = $pdo->prepare($sql);
+
+        // Bind the id parameter
+        $stmt->bindParam(':id', $id);
+
+        // Execute the query
+        return $stmt->execute();
+
+    }
+
 
 }
