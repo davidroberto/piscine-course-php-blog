@@ -8,6 +8,7 @@ class IndexController
 
     public function index()
     {
+
         $articleRepository = new ArticleRepository();
         $articles = $articleRepository->findAll();
 
