@@ -3,23 +3,27 @@
 require_once('../controller/ArticleController.php');
 require_once('../controller/IndexController.php');
 
-// Récupérer l'URL demandée
-$request = $_SERVER['REQUEST_URI'];
+$requestUri = $_SERVER['REQUEST_URI'];
+$uri = parse_url($requestUri, PHP_URL_PATH);
+$endUri = str_replace('/piscine-blog/public/', '', $uri);
+$endUri = trim($endUri, '/');
 
-// Nettoyer l'URL (enlever les paramètres GET)
-$uri = parse_url($request, PHP_URL_PATH);
 
-// Enlever le préfixe /piscine-blog/public/
-$uri = str_replace('/piscine-blog/public/', '', $uri);
-$uri = trim($uri, '/');
+if($endUri === "") {
 
-if($uri === "") {
     $indexController = new IndexController();
     $indexController->index();
-} else if ($uri === "add-article") {
+
+} else if ($endUri === "add-article") {
+
     $addArticleController = new ArticleController();
     $addArticleController->addArticle();
-} else if ($uri === "show-article") {
+
+} else if ($endUri === "show-article") {
+
     $addArticleController = new ArticleController();
     $addArticleController->showArticle();
+
+} else {
+    echo '<p>Dégage</p>';
 }
