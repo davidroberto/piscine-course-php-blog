@@ -6,8 +6,19 @@ require_once("../model/ArticleRepository.php");
 class ArticleController
 {
 
+    private $twig;
+
+    public function __construct()
+    {
+        $loader = new \Twig\Loader\FilesystemLoader('../template');
+        $this->twig = new \Twig\Environment($loader);
+    }
+
+
     public function addArticle()
     {
+
+        $isRequestOK = false;
 
         if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
@@ -21,8 +32,9 @@ class ArticleController
 
         }
 
-
-        require_once('../template/page/addArticleView.php');
+        echo $this->twig->render('page/addArticle.html.twig', [
+            'isRequestOK' => $isRequestOK
+        ]);
 
     }
 
@@ -38,9 +50,9 @@ class ArticleController
         // en fonction de son id
         $article = $articleRepository->findOneById($id);
 
-        // on appelle la vue
-        // qui affiche l'article
-        require_once('../template/page/showArticleView.php');
+        echo $this->twig->render('page/showArticle.html.twig', [
+            'article' => $article
+        ]);
     }
 
 
@@ -53,7 +65,8 @@ class ArticleController
         if ($isRequestOk) {
             header('Location: http://localhost:8888/piscine-blog/public/');
         } else {
-            require_once('../template/page/deleteArticleFailView.php');
+
+            echo $this->twig->render('page/deleteArticleFail.html.twig');
         }
 
     }

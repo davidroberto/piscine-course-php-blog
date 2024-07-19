@@ -1,6 +1,6 @@
-<?php require_once("../template/partial/header.php"); ?>
+{% include('partial/header.html.twig') %}
 
-    <main>
+<main>
 
         <h1>Ajouter un article</h1>
 
@@ -22,12 +22,12 @@
         </form>
 
 
-        <?php if ($isRequestOK) { ?>
+        {% if isRequestOk %}
 
             <p>L'article a bien été enregistré en BDD</p>
 
-        <?php } ?>
+        {% endif %}
 
     </main>
 
-<?php require_once("../template/partial/footer.php"); ?>
+{% include('partial/footer.html.twig') %}

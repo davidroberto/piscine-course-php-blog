@@ -25,8 +25,6 @@ class IndexController
         echo $twig->render('page/index.html.twig', [
             'articles' => $articles
         ]);
-
-        //require_once('../template/page/indexView.php');
     }
 
 
