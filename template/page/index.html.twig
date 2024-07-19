@@ -1,1 +1,20 @@
-<h1>Yo</h1>
+<main>
+
+    <h1>Le super blog de la piscine</h1>
+
+    <h2>Les derniers articles</h2>
+
+    {% for article in articles %}
+
+        <article>
+            <h2>{{ article.title }}</h2>
+
+            <a href="http://localhost:8888/piscine-blog/public/show-article?id={{ article.id }}">Afficher l'article</a>
+
+            <a href="http://localhost:8888/piscine-blog/public/delete-article?id={{ article.id }}">Supprimer l'article</a>
+
+        </article>
+
+    {% endfor %}
+
+</main>

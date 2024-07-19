@@ -19,8 +19,14 @@ class IndexController
         $articleRepository = new ArticleRepository();
         $articles = $articleRepository->findAll();
 
+        $loader = new \Twig\Loader\FilesystemLoader('../template');
+        $twig = new \Twig\Environment($loader);
 
-        require_once('../template/page/indexView.php');
+        echo $twig->render('page/index.html.twig', [
+            'articles' => $articles
+        ]);
+
+        //require_once('../template/page/indexView.php');
     }
 
 
