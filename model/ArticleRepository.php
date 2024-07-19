@@ -20,7 +20,7 @@ class ArticleRepository
 
     // la méthode insert permet de sauver des données dans la table article
     // elle insère le titre, le contenu et la date qu'on lui envoie en parametre
-    public function insert($title, $content, $date, $sort)
+    public function insert($title, $content, $date)
     {
         // model
         $dbConnection = new DbConnection();

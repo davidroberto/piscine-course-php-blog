@@ -1,14 +1,15 @@
-{% include('partial/header.html.twig') %}
+{% extends 'base.html.twig' %}
 
+{% block content %}
 <main>
 
-        <h1>Le super blog de la piscine</h1>
+    <h1>Le super blog de la piscine</h1>
 
-        <article>
-            <h2> {{ article.title }}</h2>
-        </article>
+    <article>
+        <h2> {{ article.title }}</h2>
+    </article>
 
+</main>
 
-    </main>
+{% endblock content %}
 
-{% include('partial/footer.html.twig') %}
